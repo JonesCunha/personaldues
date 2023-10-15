@@ -1,54 +1,17 @@
+
 import 'package:flutter/material.dart';
+import 'pages/myHomePage.dart';
 
-/// Flutter code sample for [AnimatedContainer].
+main() => runApp(ExpensesApp());
 
-void main() => runApp(const AnimatedContainerExampleApp());
-
-class AnimatedContainerExampleApp extends StatelessWidget {
-  const AnimatedContainerExampleApp({super.key});
+class ExpensesApp extends StatelessWidget {
+  const ExpensesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('AnimatedContainer Sample')),
-        body: const AnimatedContainerExample(),
-      ),
+      home: MyHomePage(),
     );
   }
 }
 
-class AnimatedContainerExample extends StatefulWidget {
-  const AnimatedContainerExample({super.key});
-
-  @override
-  State<AnimatedContainerExample> createState() =>
-      _AnimatedContainerExampleState();
-}
-
-class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
-  bool selected = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selected = !selected;
-        });
-      },
-      child: Center(
-        child: AnimatedContainer(
-          width: selected ? 100.0 : 100.0,
-          height: selected ? 100.0 : 200.0,
-          color: selected ? Colors.red : Colors.blue,
-          alignment:
-              selected ? Alignment.center : AlignmentDirectional.topCenter,
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.fastOutSlowIn,
-          child: const FlutterLogo(size: 50),
-        ),
-      ),
-    );
-  }
-}
