@@ -17,6 +17,10 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: 
+       FloatingActionButton(backgroundColor: Colors.black,
+          elevation: 10,
+          child: Icon(Icons.add), onPressed: ()=>{}),
       appBar: AppBar(
         title: Text('Despesas Pessoais'),
       ),
@@ -38,16 +42,37 @@ class MyHomePage extends StatelessWidget {
           Column(
             //redundante, padrao de baixo já é assim.
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ..._transactions.map((e) => Card(child: Text(e.tittle),)).toList(),
-            ]
+            children: 
+              _transactions.map((e) => Card(child: 
+                Row(children: [
+                  Container(
+                    child: Text(e.value.toString()),
+                  ),
+                  Column(
+                    children: [
+                      Text(e.tittle),
+                      Text(e.date.toString()),
+                    ],
+                  )
+                ],)
+                
+              
+              ,)).toList(),
+            
+          ),
+          SizedBox(
+            height: 100,
           ),
           ElevatedButton(
             onPressed: () => {},
             child: Text('Botao'),
-          )
+          ),
+
+         
         ],
+        
       ),
+      
     );
   }
 }
