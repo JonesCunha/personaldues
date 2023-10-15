@@ -30,6 +30,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
+        backgroundColor: Colors.purple[400],
+        shape: Border.all(width: 2),
+        useSafeArea: true,
         context: context,
         builder: (ctx) {
           return TransactionForm(onSubmit: _addTransaction);
@@ -45,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _transactions.add(newTransaction);
     });
+    Navigator.of(context).pop();
   }
 
   @override
@@ -57,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text('Despesas Pessoais'),
+        
         actions: [IconButton(onPressed: () => _openTransactionFormModal(context), icon: Icon(Icons.add))],
       ),
       body: SingleChildScrollView(

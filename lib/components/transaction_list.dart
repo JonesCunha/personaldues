@@ -18,6 +18,7 @@ class TransactionList extends StatelessWidget {
       //todo listview precisa ser definido o tamanho, a exemplo do container
       //o componente pai precisa definir o tamanho pre definido
       child: ListView.builder(
+        scrollDirection: Axis.vertical,
               itemCount: transactions.length,
               itemBuilder: (ctx, index) {
                 final e = transactions[index];
@@ -29,7 +30,7 @@ class TransactionList extends StatelessWidget {
                                   horizontal: 15, vertical: 10),
                               decoration: BoxDecoration(
                                   border:
-                                      Border.all(color: Colors.purple, width: 2)),
+                                      Border.all(color: Theme.of(context).primaryColor, width: 2)),
                               padding: EdgeInsets.all(10),
                               child:
         
@@ -41,7 +42,7 @@ class TransactionList extends StatelessWidget {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
-                                    color: Colors.purple),
+                                    color: Theme.of(context).primaryColor),
                               ),
                             ),
                             Column(
@@ -50,7 +51,8 @@ class TransactionList extends StatelessWidget {
                                 Text(
                                   e.tittle,
                                   style: TextStyle(
-                                      fontSize: 16, fontWeight: FontWeight.bold),
+                                      fontSize: 16, fontWeight: FontWeight.bold,
+                                      color: Theme.of(context).primaryColor),
                                 ),
                                 Text(
                                   //e.date.toString()
