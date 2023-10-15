@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:personalduestwo/models/transaction.dart';
+import 'package:intl/intl.dart';
 
 
 class MyHomePage extends StatelessWidget {
@@ -49,7 +50,11 @@ class MyHomePage extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                     decoration: BoxDecoration(border: Border.all(color: Colors.purple, width: 2)),
                     padding: EdgeInsets.all(10),
-                    child: Text(e.value.toString(), style: TextStyle(
+                    child: 
+                      
+                      //Text('R\$ ${e.value.toStringAsFixed(2)}', 
+                      Text(NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$').format(e.value),
+                      style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                       color: Colors.purple 
@@ -59,7 +64,10 @@ class MyHomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(e.tittle, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                      Text(e.date.toString(),style: TextStyle(color: Colors.grey[800]),),
+                      Text(
+                          //e.date.toString()
+                          DateFormat('d/MM/y').format(e.date) 
+                          ,style: TextStyle(color: Colors.grey[800]),),
                     ],
                   )
                 ],)
