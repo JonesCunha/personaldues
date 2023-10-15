@@ -19,23 +19,25 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Despesas Pessoais'),
       ),
-      body: Column(
-        //A coluna tem o eixo main na vertical e a cross na horizontal,
-        //Já as rows é invertido, as sintaes abaixo.
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            // width: double.infinity,
-            height: 100,
-            child: Card(
-              elevation: 5,
-              color: Colors.blue,
-              child: Text('Grafico'),
+      body: SingleChildScrollView(
+        child: Column(
+          //A coluna tem o eixo main na vertical e a cross na horizontal,
+          //Já as rows é invertido, as sintaes abaixo.
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              // width: double.infinity,
+              height: 100,
+              child: Card(
+                elevation: 5,
+                color: Colors.blue,
+                child: Text('Grafico'),
+              ),
             ),
-          ),
-          TransactionUser(),
-        ],
+            TransactionUser(),
+          ],
+        ),
       ),
     );
   }

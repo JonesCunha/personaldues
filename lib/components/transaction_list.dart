@@ -9,7 +9,7 @@ class TransactionList extends StatelessWidget {
 
   final List<Transaction> transactions;
 
-  TransactionList({super.key, required this.transactions});
+  const TransactionList({super.key, required this.transactions});
 
   @override
   Widget build(BuildContext context) {
