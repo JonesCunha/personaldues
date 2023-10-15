@@ -46,12 +46,20 @@ class MyHomePage extends StatelessWidget {
               _transactions.map((e) => Card(child: 
                 Row(children: [
                   Container(
-                    child: Text(e.value.toString()),
+                    margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                    decoration: BoxDecoration(border: Border.all(color: Colors.purple, width: 2)),
+                    padding: EdgeInsets.all(10),
+                    child: Text(e.value.toString(), style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.purple 
+                    ),),
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(e.tittle),
-                      Text(e.date.toString()),
+                      Text(e.tittle, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                      Text(e.date.toString(),style: TextStyle(color: Colors.grey[800]),),
                     ],
                   )
                 ],)
