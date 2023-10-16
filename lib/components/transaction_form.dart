@@ -1,7 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class TransactionForm extends StatefulWidget {
-  TransactionForm({super.key, required this.onSubmit});
+  const TransactionForm({super.key, required this.onSubmit});
 
   final void Function(String, double) onSubmit;
 
@@ -24,38 +26,42 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Card(
-          elevation: 5,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(children: [
-              TextField(
-                controller: titleController,
-                onSubmitted: (_) => _submitForm(),
-                decoration: InputDecoration(labelText: 'Titulo'),
-              ),
-              TextField(
-                controller: valueController,
-                onSubmitted: (_) => _submitForm(),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                decoration: InputDecoration(labelText: 'Valor (R\$)'),
-              ),
-            ]),
+    return Container(
+      height: 200,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Card(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(children: [
+                TextField(
+                  controller: titleController,
+                  onSubmitted: (_) => _submitForm(),
+                  decoration: InputDecoration(labelText: 'Titulo'),
+                ),
+                TextField(
+                  controller: valueController,
+                  onSubmitted: (_) => _submitForm(),
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  decoration: InputDecoration(labelText: 'Valor (R\$)'),
+                ),
+              ]),
+            ),
           ),
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).primaryColor),
-          child: Text(
-            'Adicionar',
-            style: TextStyle(
-                fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).primaryColor),
+            onPressed: _submitForm,
+            child: Text(
+              'Adicionar',
+              style: TextStyle(
+                  fontSize: 25, fontWeight: FontWeight.bold, 
+                  color: Colors.black, ),
+            ),
           ),
-          onPressed: _submitForm,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
