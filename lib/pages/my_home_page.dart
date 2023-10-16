@@ -41,12 +41,11 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   List<Transaction> get _recentTransactions {
-    return _transactions.where(  (element) 
-    {
-      return element.date.isAfter(DateTime.now().subtract(Duration(days: 7),));
-    }
-    
-    ).toList();
+    return _transactions.where((element) {
+      return element.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
+    }).toList();
   }
 
   _openTransactionFormModal(BuildContext context) {
@@ -60,16 +59,37 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
-  _addTransaction(String title, double value) {
+  _addTransaction(String title, double value, DateTime date) {
     final newTransaction = Transaction(
         id: Random().nextDouble().toString(),
         tittle: title,
         value: value,
-        date: DateTime.now());
+        date: date);
     setState(() {
       _transactions.add(newTransaction);
     });
     Navigator.of(context).pop();
+  }
+
+  _deleteTransaction(String id) {
+    // AlertDialog(
+    //   title: Text('Confirma?'),
+    //   content: Text('Certeza?'),
+    //   actions: [
+    //     TextButton(
+    //         onPressed: () {
+    //           Navigator.of(context).pop();
+    //         },
+    //         child: Text('Cancelar')),
+    //     TextButton(
+    //         onPressed: () {
+    //         child: Text('Excluir')),
+    //   ],
+    // );
+    //         },
+    setState(() {
+      _transactions.removeWhere((tr) => tr.id == id);
+    });
   }
 
   @override
@@ -90,22 +110,23 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.add))
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          //A coluna tem o eixo main na vertical e a cross na horizontal,
-          //Já as rows é invertido, as sintaes abaixo.
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Chart(
-              recentTransaction: _transactions,
+      body: Column(
+        //A coluna tem o eixo main na vertical e a cross na horizontal,
+        //Já as rows é invertido, as sintaes abaixo.
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Chart(
+            recentTransaction: _transactions,
+          ),
+          Column(children: [
+            TransactionList(
+              transactions: _transactions,
+              onRemove: _deleteTransaction,
             ),
-            Column(children: [
-              TransactionList(transactions: _transactions),
-              //TransactionForm(onSubmit: _addTransaction)
-            ])
-          ],
-        ),
+            //TransactionForm(onSubmit: _addTransaction)
+          ])
+        ],
       ),
     );
   }
