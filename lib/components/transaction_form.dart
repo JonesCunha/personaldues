@@ -44,14 +44,15 @@ class _TransactionFormState extends State<TransactionForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        // crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize:  MainAxisSize.min,
         children: [
           Card(
             elevation: 5,
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: EdgeInsets.only(top:10,right: 10,left: 10,
+                        bottom: 10 + MediaQuery.of(context).viewInsets.bottom,),
               child: Column(children: [
                 TextField(
                   controller: _titleController,

@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'pages/my_home_page.dart';
 
 main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  //forçar o app nao girar a tela.
+  //WidgetsFlutterBinding.ensureInitialized();
+  //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(ExpensesApp());
 }
 
