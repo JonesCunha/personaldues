@@ -43,22 +43,28 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
+    // print('build() TransactionForm');
     return Container(
       child: Column(
-        // crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize:  MainAxisSize.min,
+        //crossAxisAlignment: CrossAxisAlignment.stretch,
+        // mainAxisSize: MainAxisSize.min,
         children: [
           Card(
             elevation: 5,
             child: Padding(
-              padding: EdgeInsets.only(top:10,right: 10,left: 10,
-                        bottom: 10 + MediaQuery.of(context).viewInsets.bottom,),
+              padding: EdgeInsets.only(
+                top: 10,
+                right: 10,
+                left: 10,
+                bottom: 10 + MediaQuery.of(context).viewInsets.bottom,
+              ),
               child: Column(children: [
                 TextField(
-                  controller: _titleController,
-                  onSubmitted: (_) => _submitForm(),
-                  decoration: InputDecoration(labelText: 'Titulo'),
-                ),
+                    controller: _titleController,
+                    onSubmitted: (_) => _submitForm(),
+                    decoration: InputDecoration(
+                      labelText: 'Titulo',
+                    )),
                 TextField(
                   controller: _valueController,
                   onSubmitted: (_) => _submitForm(),

@@ -8,7 +8,8 @@ import '../components/transaction_list.dart';
 import '../models/transaction.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+
+  const MyHomePage();
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -83,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print('build() _MyHomePageState');
 
     bool isLandScape = MediaQuery.of(context).orientation == Orientation.landscape;
 
@@ -107,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final avaliableHeight = MediaQuery.of(context).size.height -
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
-    print(avaliableHeight);
+    //print(avaliableHeight);
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
