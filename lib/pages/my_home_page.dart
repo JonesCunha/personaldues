@@ -9,7 +9,7 @@ import '../models/transaction.dart';
 
 class MyHomePage extends StatefulWidget {
 
-  const MyHomePage();
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print('build() _MyHomePageState');
+    // print('build() _MyHomePageState');
 
     bool isLandScape = MediaQuery.of(context).orientation == Orientation.landscape;
 
